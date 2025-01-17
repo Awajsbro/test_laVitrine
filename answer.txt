@@ -1,33 +1,33 @@
 1. Nos requis sont probablement flous ou incomplets… Avez-vous dû faire des hypothèses sur nos besoins exacts, et si oui, lesquelles?
-    - Les formats date et heure, j'ai supposer qu'on voulait avoir les dates et heure locale dans le format AAAA-MM-JJThh:mm:ss qui est le plus commun
-    - Le format des Adresse, j'ai supposer qu'il n'etait pas necessaire d'indiquer le pays et qu'on souhaiterai un format classique sans prendre en compte la ligne 2
-    - Le ratio des images, j'ai penser que le format de l'image pouvait etre un partie pris de l'evenement et ai juste garder le plus grand
-    - La structure du CSV, j'ai choisie de la garder par defaut avec des "," comme separateur
-    - La gestion des evenements sur plusieur lieu, j'ai decider de garder le premier pour ne pas avoir de doublons
+    - Les formats date et heure, j'ai supposé qu'on voulait avoir les dates et heures locales dans le format AAAA-MM-JJThh:mm:ss qui est le plus commun
+    - Le format des adresses, j'ai supposé qu'il n'était pas nécessaire d'indiquer le pays et qu'on souhaiterait un format classique sans prendre en compte la ligne 2
+    - Le ratio des images, j'ai pensé que le format de l'image pouvait être un parti pris de l'événement et ai juste gardé le plus grand
+    - La structure du CSV, j'ai choisi de la garder par défaut avec des "," comme séparateur
+    - La gestion des événements sur plusieurs lieux, j'ai décidé de garder le premier pour ne pas avoir de doublons
 
 
 2. Décrivez brièvement la stack technique utilisée (minimalement le langage, mais au besoin le framework, plateforme de développement ou d’exécution, ou autre composante technique) et expliquez pourquoi vous avez fait ce choix.
-    - J'ai utilisé JavaScript executer sous node 18 car c'est le language avec lequel je suis le plus famillier et c'est un langage tres polivalent
+    - J'ai utilisé JavaScript exécuté sous Node.js car c'est le langage avec lequel je suis le plus familier et c'est un langage très polyvalent
 
 
 3. Qu’est-ce qui pourrait être amélioré dans votre outil pour le rendre plus efficace, ou plus stable, ou plus maintenable, ou plus résilient aux erreurs?
-    - Actuellement le seul argument qu'il prend en compte c'est la categorie et encore il ne la verifie pas et il faut rentrer la valeur exacte de l'API, on pourrait donc faire en sorte qu'il puisse prendre une periode, nom de fichier etc... et rajouter une aide en cas de mauvaise execution ainsi que la liste des differente categorie pour qu'il puisse verifier
-    - D'autre idee developper dans la question 4 
+    - Actuellement le seul argument qu'il prend en compte c'est la catégorie et encore il ne la vérifie pas et il faut rentrer la valeur exacte de l'API, on pourrait donc faire en sorte qu'il puisse prendre une période, nom de fichier etc... et rajouter une aide en cas de mauvaise exécution ainsi que la liste des différentes catégories pour qu'il puisse vérifier
+    - D'autres idées développer dans la question 4
 
 
 4. En considérant votre implémentation actuelle, identifiez et décrivez brièvement 2-3 améliorations techniques qui permettraient de : 
  a. Rendre le code plus maintenable 
-    - Passez les commentaires en anglais pour permettre a plus de monde de comprendre du premier coup d'oeil
-    - Decouper la fonction fetchEvents en plusieur plus petite pour ameliorer la lisibilieter et la clarte du code
+    - Passez les commentaires en anglais pour permettre à plus de monde de comprendre du premier coup d'oeil
+    - Découper la fonction fetchEvents en plusieurs plus petites pour améliorer la lisibilite et la clarté du code
 
 
  b. Améliorer la scalabilité de la solution
-    - Dans l'ideal si les events sont rajouter a heure fix il faudrait l'appeller une fois par jour et stocker les informations dans une db plutot que d'utiliser en boucle l'API, surtout qu'il doit y avoir des couts associer et que l'on a pas la main sur la scalabilité de TicketMaster
-    - Si l'on garde cette l'implementation actuelle il faudrait la deployer sur des server auto scalé pour qu'elle puisse etre dupliquer au besoin
+    - Dans l'idéal, si les événements sont ajoutés à l'heure fixe, il faudrait l'appeler une fois par jour et stocker les informations dans une base de données plutôt que d'utiliser en boucle l'API, surtout qu'il doit y avoir des coûts associés et que l'on n'a pas la main sur la scalabilité de TicketMaster
+    - Si l'on garde cette implémentation actuelle, il faudrait la déployer sur des serveurs auto scalés pour qu'elle puisse être dupliquée au besoin
 
 
  c. Augmenter la résilience aux erreurs
-    - Faire un premier appel sur la totalite de la periode afin de recuperer le nombre d'evenement attendu et pouvoir le verifier a la fin avec le nombre d'evenement reelement recuperer
-    - Mettre en place des try catch qui pourrait remonter des erreurs et essayer de relancer une fois supplementaire les requettes echouer dans le cas d'un probleme ponctuelle sur le reseau
-    - Avoir un systeme de logs avec une alerte en cas d'erreurs pour pouvoir la rectifier au plus vite a defaut d'avoir reussi a la prevenir
-    - Passez en TypeScript pour pouvoir s'assurer grace au type que l'on recoit les donnees au bon format
+    - Faire un premier appel sur la totalité de la période afin de récupérer le nombre d'événements attendu et pouvoir le vérifier à la fin avec le nombre d'événements réellement récupérés
+    - Mettre en place des try catch qui pourraient remonter des erreurs et essayer de relancer une fois supplémentaire les requêtes échouées dans le cas d'un problème ponctuel sur le réseau
+    - Avoir un système de logs avec une alerte en cas d'erreurs pour pouvoir les rectifier au plus vite, à défaut d'avoir réussi à les prévenir
+    - Passez en TypeScript pour pouvoir s'assurer grâce au type que l'on reçoit les données au bon format
