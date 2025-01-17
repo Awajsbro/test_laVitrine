@@ -2,5 +2,6 @@
 
 Pour tester faire les commandes 
 
-npm i
-node getEvents.js
+`npm i`
+
+`node getEvents.js`
